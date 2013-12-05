@@ -14,6 +14,7 @@ $ bower install create-error
 
 ```js
 var createError    = require('create-error');
+
 var MyCustomError  = createError('MyCustomError');
 var SubCustomError = createError(MyCustomError, 'CoolSubError', {messages: []});
 
