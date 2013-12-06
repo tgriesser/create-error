@@ -43,10 +43,8 @@ return function() {
   return ErrorCtor;
 };
 
-// -----
-// Just a few helpers to ensure the codeblock clean and quick:
+// Just a few helpers to clean up the function above
 // https://github.com/petkaantonov/bluebird/wiki/Optimization-killers
-// -----
 function getName(args) {
   if (args.length === 0) return '';
   return isError(args[0]) ? (args[1] || '') : args[0];
