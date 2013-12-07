@@ -10,7 +10,7 @@
 // relevant stack traces, messages, and prototypes.
 define(function() {
 
-var toString = [].toString;
+var toString = Object.prototype.toString;
 
 // Creates an new error type with a "name",
 // and any additional properties that should be set
