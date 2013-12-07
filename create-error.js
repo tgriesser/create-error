@@ -1,4 +1,4 @@
-//     create-error.js 0.2.0
+//     create-error.js 0.2.1
 //     (c) 2013 Tim Griesser
 //     This source may be freely distributed under the MIT license.
 (function(define) {
