@@ -1,6 +1,6 @@
 {
   "name": "create-error",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple helper for sub-classing the Error object",
   "main": "create-error.js",
   "scripts": {
@@ -23,8 +23,5 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "~1.15.0"
-  },
-  "dependencies": {
-    "lodash": ">=2.0.0"
   }
 }

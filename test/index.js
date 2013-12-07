@@ -38,6 +38,12 @@ describe('create-error', function() {
       deepEqual(b.anArray, []);
     });
 
+    it('should allow for empty objects on the cloned hash', function() {
+      var TestingError = createError('TestingError', {anEmptyObj: Object.create(null)});
+      var a = new TestingError('Test the array');
+      deepEqual(a.anEmptyObj, Object.create(null));
+    });
+
   });
 
   describe('subclassing errors', function() {
