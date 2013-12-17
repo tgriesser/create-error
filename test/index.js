@@ -44,6 +44,14 @@ describe('create-error', function() {
       deepEqual(a.anEmptyObj, Object.create(null));
     });
 
+    it('attaches attrs in the second arg of the error ctor, #3', function() {
+      var RequestError = createError('RequestError', {status: 400});
+      var reqErr = new RequestError('404 Error', {status: 404});
+      equal(reqErr.status, 404);
+      equal(reqErr.message, '404 Error');
+      equal(reqErr.name, 'RequestError');
+    });
+
   });
 
   describe('subclassing errors', function() {
@@ -75,7 +83,7 @@ describe('create-error', function() {
   describe('invalid values sent to the second argument', function() {
 
     it('should ignore falsy values', function() {
-      var TestingError = createError('TestingError', '');
+      var TestingError  = createError('TestingError', '');
       var TestingError2 = createError('TestingError', null);
       var TestingError3 = createError('TestingError', void 0);
       var a = new TestingError('Test the array');

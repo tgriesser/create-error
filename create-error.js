@@ -23,13 +23,9 @@ return function() {
   var name       = getName(args);
   var target     = getTarget(args);
   var properties = getProps(args);
-  function ErrorCtor(message) {
-    if (isObject(properties)) {
-      var keys = inheritedKeys(properties);
-      for (var i = 0, l = keys.length; i < l; ++i) {
-        this[keys[i]] = clone(properties[keys[i]]);
-      }
-    }
+  function ErrorCtor(message, obj) {
+    attachProps(this, properties);
+    attachProps(this, obj);
     this.message = (message || this.message);
     if (message instanceof Error) {
       this.message = message.message;
@@ -76,6 +72,16 @@ function isError(obj) {
 // an object-literal, or nothing at all.
 function isObject(obj) {
   return (obj && typeof obj === "object" && toString.call(obj) === "[object Object]");
+}
+
+// Used to attach attributes to the error object in the constructor.
+function attachProps(context, target) {
+  if (isObject(target)) {
+    var keys = inheritedKeys(target);
+    for (var i = 0, l = keys.length; i < l; ++i) {
+      context[keys[i]] = clone(target[keys[i]]);
+    }
+  }
 }
 
 // Don't need the full-out "clone" mechanism here, since if you're
