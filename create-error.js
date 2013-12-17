@@ -31,7 +31,6 @@ return function() {
       }
     }
     this.message = message;
-    this.cause = message;
     if (message instanceof Error) {
       this.message = message.message;
       this.stack = message.stack;
