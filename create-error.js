@@ -30,7 +30,7 @@ return function() {
         this[keys[i]] = clone(properties[keys[i]]);
       }
     }
-    this.message = message;
+    this.message = (message || this.message);
     if (message instanceof Error) {
       this.message = message.message;
       this.stack = message.stack;

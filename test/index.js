@@ -64,6 +64,12 @@ describe('create-error', function() {
       deepEqual(x.key, []);
     });
 
+    it('allows for a default message, #4', function() {
+      var TestingError = createError('TestingError', {message: 'Error with testing'});
+      var x = new TestingError();
+      equal(x.message, 'Error with testing');
+    });
+
   });
 
   describe('invalid values sent to the second argument', function() {
