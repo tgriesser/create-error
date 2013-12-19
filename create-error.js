@@ -1,14 +1,14 @@
-//     create-error.js 0.3.0
+//     create-error.js 0.3.1
 //     (c) 2013 Tim Griesser
 //     This source may be freely distributed under the MIT license.
-(function(define) {
+(function(factory) {
 
 "use strict";
 
 // A simple utility for subclassing the "Error"
 // object in multiple environments, while maintaining
 // relevant stack traces, messages, and prototypes.
-define(function() {
+factory(function() {
 
 var toString = Object.prototype.toString;
 
