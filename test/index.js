@@ -65,6 +65,13 @@ describe('create-error', function() {
       equal((x instanceof Error), true);
     });
 
+    it('should inherit the name if the name is omitted and parent had the name', function() {
+      var TestingError = createError('TestingError');
+      var SubTestingError = createError(TestingError);
+      var a = new SubTestingError("msg");
+      equal(a.name, 'TestingError');
+    });
+
     it('attaches the properties appropriately.', function() {
       var TestingError = createError('TestingError');
       var SubTestingError = createError(TestingError, 'SubTestingError', {key: []});
@@ -77,7 +84,6 @@ describe('create-error', function() {
       var x = new TestingError();
       equal(x.message, 'Error with testing');
     });
-
   });
 
   describe('invalid values sent to the second argument', function() {
