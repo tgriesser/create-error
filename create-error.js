@@ -38,7 +38,7 @@ return function() {
   function Err() { this.constructor = ErrorCtor; }
   Err.prototype = target['prototype'];
   ErrorCtor.prototype = new Err();
-  let parentName = target.prototype.name;
+  var parentName = target.prototype.name;
   if(parentName === 'Error') {
     parentName = '';
   }
