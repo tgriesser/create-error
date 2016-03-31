@@ -27,6 +27,7 @@ return function() {
     attachProps(this, properties);
     attachProps(this, obj);
     this.message = (message || this.message);
+    this.name = (name || this.name);
     if (message instanceof Error) {
       this.message = message.message;
       this.stack = message.stack;
@@ -37,7 +38,11 @@ return function() {
   function Err() { this.constructor = ErrorCtor; }
   Err.prototype = target['prototype'];
   ErrorCtor.prototype = new Err();
-  ErrorCtor.prototype.name = ('' + name) || 'CustomError';
+  var parentName = target.prototype.name;
+  if(parentName === 'Error') {
+    parentName = '';
+  }
+  ErrorCtor.prototype.name = ('' + (name || parentName)) || 'CustomError';
   return ErrorCtor;
 };
 
