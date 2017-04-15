@@ -16,10 +16,7 @@ var toString = Object.prototype.toString;
 // and any additional properties that should be set
 // on the error instance.
 return function() {
-  var args = new Array(arguments.length);
-  for (var i = 0; i < args.length; ++i) {
-    args[i] = arguments[i];
-  }
+  var args = Array.prototype.slice.apply(arguments);
   var name       = getName(args);
   var target     = getTarget(args);
   var properties = getProps(args);
